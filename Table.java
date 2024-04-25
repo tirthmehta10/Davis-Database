@@ -223,7 +223,7 @@ public class Table{
 				if(tokens.length > 2)
 				{
 					nullable = "NO";
-					if(tokens[2].toUpperCase().trim().equals("UNIQUE"))
+					if("UNIQUE".equals(tokens[2].toUpperCase().trim()))
 						unique = "YES";
 					else
 						unique = "NO";
@@ -292,7 +292,7 @@ public class Table{
 				
 				//handle date data type
 				for(int i=0; i < type.length; i++)
-					if(type[i].equals("DATE") || type[i].equals("DATETIME"))
+					if("DATE".equals(type[i]) || "DATETIME".equals(type[i]))
 						values[i] = "'"+values[i]+"'";
 				
 				//search for our column
@@ -310,7 +310,7 @@ public class Table{
 				//check for null constraint
 				String[] nullable = getNullable(table);
 				for(int i = 0; i < nullable.length; i++){
-					if(values[i].equals("null") && nullable[i].equals("NO")){
+					if("null".equals(values[i]) && "NO".equals(nullable[i])){
 						System.out.println("NULL-value constraint violation");
 						return;
 					}
@@ -371,7 +371,7 @@ public class Table{
 		
 		//check for null values
 		for(int i = 0; i < nullable.length; i++)
-			if(values[i].equals("null") && nullable[i].equals("NO")){
+			if("null".equals(values[i]) && "NO".equals(nullable[i])){
 				System.out.println("NULL-value constraint violation");
 				System.out.println();
 				return;
@@ -379,7 +379,7 @@ public class Table{
 		
 		//check for unique constraints
 		for(int i = 0; i < unique.length; i++)
-			if(unique[i].equals("YES")){
+			if("YES".equals(unique[i])){
 				System.out.println("Checking for unique constraint violation");
 				System.out.println();
 				
@@ -452,7 +452,7 @@ public class Table{
 	
 
 	public static byte getTypeCode(String value, String dataType){
-		if(value.equals("null")){
+		if("null".equals(value)){
 			switch(dataType){
 				case "TINYINT":     return Constants.NULL;
 				case "SMALLINT":    return Constants.SHORTNULL;
@@ -600,13 +600,13 @@ public class Table{
 			Records records = new Records();
 			
 			//handle null values in comparision
-			if (cmp.length > 0 && cmp[1].equals("=") && cmp[2].equalsIgnoreCase("null")) 
+			if (cmp.length > 0 && "=".equals(cmp[1]) && "null".equalsIgnoreCase(cmp[2])) 
 			{
 				System.out.println("Empty Set");
 				file.close();
 				return null;
 			}
-			if (cmp.length > 0 && cmp[1].equals("!=") && cmp[2].equalsIgnoreCase("null")) 
+			if (cmp.length > 0 && "!=".equals(cmp[1]) && "null".equalsIgnoreCase(cmp[2])) 
 			{
 				cmp = new String[0];
 			}
@@ -651,7 +651,7 @@ public class Table{
 						
 						//date handling
 						for(int j=0; j < type.length; j++)
-							if(type[j].equals("DATE") || type[j].equals("DATETIME"))
+							if("DATE".equals(type[j]) || "DATETIME".equals(type[j]))
 								vals[j] = "'"+vals[j]+"'";
 						
 						//check if the value satisfies the condition
@@ -659,7 +659,7 @@ public class Table{
 	
 						//date handling
 						for(int j=0; j < type.length; j++)
-							if(type[j].equals("DATE") || type[j].equals("DATETIME"))
+							if("DATE".equals(type[j]) || "DATETIME".equals(type[j]))
 								vals[j] = vals[j].substring(1, vals[j].length()-1);
 	
 						//if condition satisfied, add to response

@@ -118,7 +118,7 @@ public class BTree {
 
 			if (emptyPointer != -1) {
 				Element topNode = this.fetchElement(emptyPointer);
-				if (!topNode.values.get(0).equals("$END")) {
+				if (!"$END".equals(topNode.values.get(0))) {
 					String nodePointer = topNode.values.get(0);
 					long nextEmptyNode = this.getPointerLocation(nodePointer);
 					file.seek(NODE_POINTER_EMPTY);
@@ -382,7 +382,7 @@ public class BTree {
                 } else {
                     if (value.startsWith("$")) {
                         if (key.equals("null")) {
-                            if (this.keys.get(this.keys.size() - 1).equals("null")) {
+                            if ("null".equals(this.keys.get(this.keys.size() - 1))) {
                                 this.keys.set(this.keys.size() - 1, "null");
                                 this.values.set(this.values.size() - 1, value);
                                 return this.needToSplit();
@@ -394,7 +394,7 @@ public class BTree {
                         }
                         int ks = this.keys.size();
                         for (int i = 0; i < ks; i++) {
-                            if (!this.keys.get(i).equals("null")) {
+                            if (!"null".equals(this.keys.get(i))) {
                                 int cp = this.keys.get(i).compareTo(key);
                                 
                                 if (key.equals(this.keys.get(i))) {
@@ -411,7 +411,7 @@ public class BTree {
                         }
                         int ksize = this.keys.size();
                         for (int i = 0; i < ksize; i++) {
-                            if (this.keys.get(i).equals("null")) {
+                            if ("null".equals(this.keys.get(i))) {
                                 this.keys.add(this.keys.size() - 1, key);
                                 this.values.add(this.values.size() - 1, value);
                                 return this.needToSplit();

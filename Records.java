@@ -40,7 +40,7 @@ class Records{
 		else{
 			updateFormat();
 			
-			if(col[0].equals("*")){
+			if("*".equals(col[0])){
 				
 				for(int l: format)
 					System.out.print(DavisBase.line("-", l+3));

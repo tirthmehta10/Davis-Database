@@ -10,19 +10,19 @@ public class BPlusTree{
 		for(int i = 1; i < dataType.length; i++){
 			String dt = dataType[i];
 			
-			if(dt.equals("TINYINT")) {
+			if("TINYINT".equals(dt)) {
 				val += 1;
 			}
-			else if(dt.equals("SMALLINT")) {
+			else if("SMALLINT".equals(dt)) {
 				val += 2;
 			}
-			else if(dt.equals("INT") || dt.equals("REAL")) {
+			else if("INT".equals(dt) || "REAL".equals(dt)) {
 				val += 4;
 			}
-			else if(dt.equals("BIGINT") || dt.equals("DOUBLE") || dt.equals("DATETIME") || dt.equals("DATE")) {
+			else if("BIGINT".equals(dt) || "DOUBLE".equals(dt) || "DATETIME".equals(dt) || "DATE".equals(dt)) {
 				val += 8;
 			}
-			else if(dt.equals("TEXT")) {
+			else if("TEXT".equals(dt)) {
 				String text = values[i];
 				int len = text.length();
 				val += len;
